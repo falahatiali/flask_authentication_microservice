@@ -15,4 +15,5 @@ def create_app():
     app.config.from_object(Config) #Config loads
     db.init_app(app)
     api.init_app(app)
+    print(Config.SQLALCHEMY_DATABASE_URI)
     return app

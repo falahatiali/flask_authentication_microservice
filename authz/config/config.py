@@ -14,4 +14,4 @@ class Config:
 
     ##################### USER CONFIGURATIONS #####################
     SQLALCHEMY_TRACK_MODIFICATIONS = TESTING
-    SQLALCHEMY_DATABASE_URI = environ.get('MICRO_AUTH_DATABASE_URI', '')
+    SQLALCHEMY_DATABASE_URI = environ.get('MICRO_AUTH_DATABASE_URI', None)
