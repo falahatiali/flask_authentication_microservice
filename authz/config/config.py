@@ -10,3 +10,8 @@ class Config:
     ##################### USER CONFIGURATIONS #####################
     USER_DEFAULT_ROLE = environ.get("MICRO_AUTH_DEFAULT_ROLE", "member")
     USER_DEFAULT_STATUS = environ.get("MICRO_AUTH_DEFAULT_STATUS", "inactive")
+
+
+    ##################### USER CONFIGURATIONS #####################
+    SQLALCHEMY_TRACK_MODIFICATIONS = TESTING
+    SQLALCHEMY_DATABASE_URI = environ.get('MICRO_AUTH_DATABASE_URI', '')

@@ -1,4 +1,6 @@
 from flask import request,abort
+from authz import db
+from authz.model import User
 
 
 class UserController:
