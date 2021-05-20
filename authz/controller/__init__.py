@@ -1,1 +1,1 @@
-from authz.controller import UserController
+from authz.controller.user import UserController

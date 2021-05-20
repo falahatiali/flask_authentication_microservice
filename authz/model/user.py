@@ -1,6 +1,6 @@
 from authz import db
 from authz.config import Config
-
+from authz.util import uuidgen,now
 
 class User(db.Model):
     id = db.Column(db.String(64), primary_key=True, default=uuidgen)
