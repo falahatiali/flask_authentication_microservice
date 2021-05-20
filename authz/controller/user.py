@@ -1,20 +1,21 @@
 from flask import request,abort
 from authz import db
 from authz.model import User
+from authz.schema import UserSchema
 
 
 class UserController:
     def create_user():
         if request.content_type != 'application/json':
             abort(415)
-        data = request.get_json()
-        if len(data) != 2:
+        
+        user_schema = UserSchema(only=["username", "password"])
+        try:
+            data = user_schema.load(request.get_json())
+        except:
             abort(400)
-        if "username" not in data or "password" not in data:
-            abort(400)
+        
         if not data["username"] or not data["password"]:
-            abort(400)
-        if type(data["username"]) is not str or type(data["password"]) is not str:
             abort(400)
         user = User.query.filter_by(username=data["username"]).first()
         if user is not None:
@@ -23,10 +24,11 @@ class UserController:
         user = User(username=data["username"], password=data["password"])
         db.session.add(user)
         db.session.commit()
+        user_schema = UserSchema()
+
         return {
-            "username": data["username"],
-            "password": data["password"]
-        }
+            "user": user_schema.dump(user)
+        } ,201
 
     
     def get_users():
