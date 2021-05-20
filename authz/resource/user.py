@@ -11,9 +11,9 @@ class UserResource(Resource):
     def post(self):
         return UserController.create_user()
     
-    def patch(self):
-        return UserController.update_user()
+    def patch(self, user_id):
+        return UserController.update_user(user_id)
     
-    def delete_user(self):
-        return UserController.delete_user()
+    def delete_user(self, user_id):
+        return UserController.delete_user(user_id)
     
