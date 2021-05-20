@@ -10,7 +10,7 @@ api.add_resource(
 
 api.add_resource(
     UserResource,
-    "/user",
+    "/users/<user_id>",
     methods=["GET","PATCH","DELETE"],
     endpoint="user"
 ) 
