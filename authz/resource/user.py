@@ -14,6 +14,6 @@ class UserResource(Resource):
     def patch(self, user_id):
         return UserController.update_user(user_id)
     
-    def delete_user(self, user_id):
+    def delete(self, user_id):
         return UserController.delete_user(user_id)
     
